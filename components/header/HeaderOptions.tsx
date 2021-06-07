@@ -3,9 +3,9 @@ import { Button } from "@chakra-ui/button";
 import { AddIcon, BellIcon, SearchIcon } from "@chakra-ui/icons";
 import { HStack } from "@chakra-ui/layout";
 import { Menu, MenuButton, MenuItem, MenuList } from "@chakra-ui/menu";
-import React, { FC } from "react";
+import React, { FC, memo } from "react";
 
-const HeaderOptions: FC = () => (
+const HeaderOptions: FC = memo(() => (
   <HStack spacing='30px' height='10'>
     <Menu>
       <MenuButton variant='primary' as={Button}>
@@ -84,5 +84,6 @@ const HeaderOptions: FC = () => (
       </MenuList>
     </Menu>
   </HStack>
-);
+));
+
 export default HeaderOptions;

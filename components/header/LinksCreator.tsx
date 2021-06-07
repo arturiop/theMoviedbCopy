@@ -2,7 +2,7 @@ import { Button } from "@chakra-ui/button";
 import { ChevronRightIcon } from "@chakra-ui/icons";
 import { Menu, MenuButton, MenuItem, MenuList } from "@chakra-ui/menu";
 import Link from "next/link";
-import React, { FC } from "react";
+import React, { FC, memo } from "react";
 
 const LinksCreator: FC<PropsType> = ({ data }) => {
   const links = data.map((item, index) => (

@@ -1,6 +1,6 @@
-import { Box, Container, Flex, Link, Text } from "@chakra-ui/layout";
+import { Box, Flex, Link, Text } from "@chakra-ui/layout";
 import { Heading } from "@chakra-ui/react";
-import React, { FC } from "react";
+import React, { FC, memo } from "react";
 import { MovieDataType } from "../../../types/types";
 
 const calculateDuration = (runTime: number) => {
@@ -9,7 +9,7 @@ const calculateDuration = (runTime: number) => {
   return `${hours}h ${minutes}m`;
 };
 
-export const FilmHeading: FC<PropsType> = ({ data }) => {
+export const FilmHeading: FC<PropsType> = memo(({ data }) => {
   const releaseDate = data.release_date.split("-").reverse().join("/");
   const releaseYear = `(${data.release_date.substring(0, 4)})`;
 
@@ -42,7 +42,7 @@ export const FilmHeading: FC<PropsType> = ({ data }) => {
       </Flex>
     </Box>
   );
-};
+});
 
 type PropsType = {
   data: MovieDataType;

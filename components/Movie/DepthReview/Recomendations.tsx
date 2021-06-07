@@ -6,14 +6,14 @@ import {
   ViewIcon,
 } from "@chakra-ui/icons";
 import { Image } from "@chakra-ui/image";
-import { Box, Container, Flex, Heading, Text } from "@chakra-ui/layout";
+import { Box, Flex, Heading, Text } from "@chakra-ui/layout";
 import { useRouter } from "next/router";
-import { FC } from "react";
+import { FC, memo } from "react";
 import { useQuery } from "react-query";
 import { RecomendationsData, ResposeDataType } from "../../../types/types";
 import { pathPic } from "../../config";
 
-const RecomendationBlock: FC<PropsType> = ({ data }) => {
+const RecomendationBlock: FC<PropsType> = memo(({ data }) => {
   const rating = `${Math.round(data.vote_average * 10)}%`;
   const releseDate = data.release_date.split("-").reverse().join("/");
   return (
@@ -43,7 +43,7 @@ const RecomendationBlock: FC<PropsType> = ({ data }) => {
       </Box>
     </Box>
   );
-};
+});
 
 const Recomendations: FC = () => {
   const { query } = useRouter();

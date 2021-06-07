@@ -1,19 +1,19 @@
 import { Box, Text } from "@chakra-ui/layout";
 import { useRouter } from "next/router";
-import { FC } from "react";
+import { FC, memo } from "react";
 import { useQuery } from "react-query";
 import { MovieDataType } from "../../../types/types";
 
-const PartInformation: FC<PropsType> = ({ value, title }) => {
+const PartInformation: FC<PropsType> = memo(({ value, title }) => {
   return (
     <Box my='5'>
       <Text as='h3'>{title}</Text>
       <Box>{value ? value : "-"}</Box>
     </Box>
   );
-};
+});
 
-const FilmInfo: FC = () => {
+const FilmInfo: FC = memo(() => {
   const { query } = useRouter();
 
   const { data, isLoading } = useQuery(["movieData", { id: query.id }]);
@@ -36,7 +36,7 @@ const FilmInfo: FC = () => {
       <PartInformation value={movieData.revenue} title={"Revenue"} />
     </Box>
   );
-};
+});
 
 export default FilmInfo;
 

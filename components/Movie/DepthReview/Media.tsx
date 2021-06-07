@@ -2,7 +2,7 @@ import { Image } from "@chakra-ui/image";
 import { Box, Flex, Heading, Link } from "@chakra-ui/layout";
 import { Tab, TabList, TabPanel, TabPanels, Tabs } from "@chakra-ui/react";
 import { useRouter } from "next/router";
-import React, { FC } from "react";
+import React, { FC, memo } from "react";
 import { useQuery } from "react-query";
 import { arraySlice } from "../../../common/commonFunc";
 import {
@@ -13,7 +13,7 @@ import {
 } from "../../../types/types";
 import { pathPostrs, videoPath } from "../../config";
 
-const MostPopular: FC<PropsMostPopular> = ({ data }) => {
+const MostPopular: FC<PropsMostPopular> = memo(({ data }) => {
   return (
     <Flex>
       <Box w='50%'>
@@ -30,9 +30,9 @@ const MostPopular: FC<PropsMostPopular> = ({ data }) => {
       {data.posters && <Image src={pathPostrs + data.posters} />}
     </Flex>
   );
-};
+});
 
-const VideoBox: FC<PropsVideoBox> = ({ data }) => {
+const VideoBox: FC<PropsVideoBox> = memo(({ data }) => {
   const videos = data.map((item, index) => (
     <iframe
       key={index}
@@ -44,26 +44,32 @@ const VideoBox: FC<PropsVideoBox> = ({ data }) => {
     ></iframe>
   ));
   return <Flex>{videos}</Flex>;
-};
-const DrawsBackDrops: FC<PropsDrawsImages> = ({ data }) => {
-  const backdrops = data.map((item) => (
-    <Image maxH='50%' width='100%' src={pathPostrs + item.file_path} />
+});
+
+const DrawsBackDrops: FC<PropsDrawsImages> = memo(({ data }) => {
+  const backdrops = data.map((item, index) => (
+    <Image
+      key={index}
+      maxH='50%'
+      width='100%'
+      src={pathPostrs + item.file_path}
+    />
   ));
   return <Flex>{backdrops}</Flex>;
-};
+});
 
-const DrawsImages: FC<PropsDrawsImages> = ({ data }) => {
-  const images = data.map((item) => (
-    <Image src={pathPostrs + item.file_path} />
+const DrawsImages: FC<PropsDrawsImages> = memo(({ data }) => {
+  const images = data.map((item, index) => (
+    <Image key={index} src={pathPostrs + item.file_path} />
   ));
   return (
     <Flex w='100%' overflowX='scroll'>
       {images}
     </Flex>
   );
-};
+});
 
-const Media: FC<Media> = ({ videos, images }) => {
+const Media: FC<Media> = memo(({ videos, images }) => {
   const posters = images.posters;
   const backdrops = images.backdrops;
   const video = videos.results;
@@ -85,7 +91,6 @@ const Media: FC<Media> = ({ videos, images }) => {
       <Tabs size='md' variant='enclosed'>
         <TabList>
           <Tab
-            onClick={() => console.log("cl")}
             _focus={{ shadow: "none" }}
             _selected={{ borderBottom: "5px solid" }}
           >
@@ -128,9 +133,9 @@ const Media: FC<Media> = ({ videos, images }) => {
       </Tabs>
     </Box>
   );
-};
+});
 
-const MediaContainer = () => {
+const MediaContainer = memo(() => {
   const { query } = useRouter();
   const { data: images, isLoading: isLoadingImages } = useQuery([
     "images",
@@ -146,7 +151,7 @@ const MediaContainer = () => {
 
   if (isLoadingImages || isLoagingVideos) return <div>Loading...</div>;
   return <Media videos={videosData} images={imagesData} />;
-};
+});
 
 export default MediaContainer;
 

@@ -1,18 +1,18 @@
 import { Box, Container, Flex, Heading } from "@chakra-ui/layout";
 import { Button } from "@chakra-ui/button";
-import React, { FC, useState } from "react";
+import React, { FC, memo, useState } from "react";
 import LinksCreator from "./LinksCreator";
 import { Image } from "@chakra-ui/image";
 import { dataFooter, bottomLogo } from "../config";
 
-const FooterColum: FC<PropsType> = ({ title, subtypes }) => (
+const FooterColum: FC<PropsType> = memo(({ title, subtypes }) => (
   <Box>
     <Heading fontSize='22'>{title.toUpperCase()}</Heading>
     <LinksCreator data={subtypes} />
   </Box>
-);
+));
 
-const Footer: FC = () => {
+const Footer: FC = memo(() => {
   const [data] = useState(dataFooter);
   const [userName] = useState("Artur");
   const links = data.map((item, index) => (
@@ -44,10 +44,11 @@ const Footer: FC = () => {
       </Container>
     </Box>
   );
-};
+});
 
 export default Footer;
 
+const memoFooter = memo(Footer);
 type PropsType = {
   title: string;
   subtypes: Array<any>;

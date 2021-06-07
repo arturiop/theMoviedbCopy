@@ -1,11 +1,11 @@
 import { Container, SimpleGrid } from "@chakra-ui/layout";
 import { Button } from "@chakra-ui/button";
 import { Menu, MenuButton, MenuList } from "@chakra-ui/menu";
-import { FC } from "react";
+import { FC, memo } from "react";
 import LinksCreator from "../../header/LinksCreator";
 import { ChevronDownIcon } from "@chakra-ui/icons";
 
-const ContentNavBar: FC<PropsType> = ({ data }) => {
+const ContentNavBar: FC<PropsType> = memo(({ data }) => {
   const categories = data.map((item, index) => (
     <Menu key={index}>
       <MenuButton
@@ -31,7 +31,7 @@ const ContentNavBar: FC<PropsType> = ({ data }) => {
       </SimpleGrid>
     </Container>
   );
-};
+});
 
 export default ContentNavBar;
 

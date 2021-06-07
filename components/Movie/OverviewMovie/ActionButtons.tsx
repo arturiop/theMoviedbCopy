@@ -8,9 +8,9 @@ import {
 import { Box, Flex, Text } from "@chakra-ui/layout";
 import { CircularProgress, CircularProgressLabel } from "@chakra-ui/progress";
 import { Tooltip } from "@chakra-ui/tooltip";
-import { FC } from "react";
+import { FC, memo } from "react";
 
-export const ActionButtons: FC<PropsType> = ({ vote }) => {
+export const ActionButtons: FC<PropsType> = memo(({ vote }) => {
   const rating = vote * 10;
   return (
     <Box mb='3%'>
@@ -32,18 +32,18 @@ export const ActionButtons: FC<PropsType> = ({ vote }) => {
           User Score
         </Text>
         <Flex alignItems='center'>
-          <ButOn text='Add to list'>
+          <ButtomAction text='Add to list'>
             <HamburgerIcon />
-          </ButOn>
-          <ButOn text='Mark as fovourite'>
+          </ButtomAction>
+          <ButtomAction text='Mark as fovourite'>
             <TriangleUpIcon />
-          </ButOn>
-          <ButOn text='Add to your watchlist'>
+          </ButtomAction>
+          <ButtomAction text='Add to your watchlist'>
             <AttachmentIcon />
-          </ButOn>
-          <ButOn text='Rate It!'>
+          </ButtomAction>
+          <ButtomAction text='Rate It!'>
             <StarIcon />
-          </ButOn>
+          </ButtomAction>
           <Box>
             <Button color='white'>
               <HamburgerIcon mr='5' />
@@ -54,12 +54,13 @@ export const ActionButtons: FC<PropsType> = ({ vote }) => {
       </Flex>
     </Box>
   );
-};
+});
+
 type PropsType = {
   vote: number;
 };
 
-const ButOn: FC<PropsT> = ({ children, text }) => {
+const ButtomAction: FC<PropsT> = memo(({ children, text }) => {
   return (
     <Box mx='5%'>
       <Tooltip hasArrow label={text} bg='gray.800'>
@@ -76,7 +77,7 @@ const ButOn: FC<PropsT> = ({ children, text }) => {
       </Tooltip>
     </Box>
   );
-};
+});
 
 type PropsT = {
   text?: string;

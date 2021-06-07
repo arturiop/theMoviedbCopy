@@ -4,8 +4,8 @@ import React, { FC } from "react";
 
 const LinksCreator: FC<PropsType> = ({ data }) => {
   const links = data.map((item, index) => (
-    <Box>
-      <Link key={index} href={item.link}>
+    <Box key={index}>
+      <Link href={item.link}>
         <a>{item.description}</a>
       </Link>
     </Box>

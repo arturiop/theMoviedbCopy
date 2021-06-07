@@ -1,10 +1,10 @@
 import { Button } from "@chakra-ui/button";
 import { SimpleGrid } from "@chakra-ui/layout";
 import { Menu, MenuButton, MenuList } from "@chakra-ui/menu";
-import React, { FC } from "react";
+import React, { FC, memo } from "react";
 import LinksCreator from "./LinksCreator";
 
-const HeaderBar: FC<PropsType> = ({ data }) => {
+const HeaderBar: FC<PropsType> = memo(({ data }) => {
   const categories = data.map((item, index) => (
     <Menu key={index}>
       <MenuButton
@@ -27,7 +27,8 @@ const HeaderBar: FC<PropsType> = ({ data }) => {
       {categories}
     </SimpleGrid>
   );
-};
+});
+
 export default HeaderBar;
 
 type PropsType = {

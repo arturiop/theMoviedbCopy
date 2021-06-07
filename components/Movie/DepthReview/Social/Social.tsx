@@ -1,8 +1,8 @@
 import { Button } from "@chakra-ui/button";
-import { Box, Flex, Heading, Link } from "@chakra-ui/layout";
+import { Box, Heading, Link } from "@chakra-ui/layout";
 import { Tab, TabList, TabPanel, TabPanels, Tabs } from "@chakra-ui/tabs";
 import { useRouter } from "next/router";
-import { FC, useState } from "react";
+import { FC, memo, useState } from "react";
 import { useQuery } from "react-query";
 import {
   ReviewsAuthorType,
@@ -11,11 +11,11 @@ import {
 } from "../../../../types/types";
 import { BlockReviews } from "./BlockReviews";
 
-export const Discussions = () => {
+export const Discussions = memo(() => {
   return <div>Discussions</div>;
-};
+});
 
-export const Reviews: FC<PropsReviews> = ({ data, selected }) => {
+export const Reviews: FC<PropsReviews> = memo(({ data, selected }) => {
   const { query } = useRouter();
   const { data: mData } = useQuery(["movieData", { id: query.id }]);
   const movieData = mData as MovieDataType;
@@ -30,9 +30,9 @@ export const Reviews: FC<PropsReviews> = ({ data, selected }) => {
         : `We don't have any reviews for ${movieData.title}. Would you like to write one?`}
     </Box>
   );
-};
+});
 
-const Social: FC<PropsType> = ({ data }) => {
+const Social: FC<PropsType> = memo(({ data }) => {
   const [value, setValue] = useState(0);
 
   const showReviews = () => {
@@ -86,7 +86,7 @@ const Social: FC<PropsType> = ({ data }) => {
       </Tabs>
     </Box>
   );
-};
+});
 
 const SocialContainer: FC = () => {
   const { query } = useRouter();

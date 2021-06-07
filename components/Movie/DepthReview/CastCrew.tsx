@@ -1,13 +1,13 @@
 import { Image } from "@chakra-ui/image";
 import { Box, Flex, Heading, Link, Text } from "@chakra-ui/layout";
 import { useRouter } from "next/router";
-import React, { FC } from "react";
+import React, { FC, memo } from "react";
 import { useQuery } from "react-query";
 import { arraySlice } from "../../../common/commonFunc";
 import { CastType, CreditsDataType } from "../../../types/types";
 import { avatarNotFound, profilePhotoPath } from "../../config";
 
-const CardArtist: FC<PropsCardArtist> = ({ data }) => {
+const CardArtist: FC<PropsCardArtist> = memo(({ data }) => {
   return (
     <Box
       minW='150px'
@@ -35,9 +35,9 @@ const CardArtist: FC<PropsCardArtist> = ({ data }) => {
       </Box>
     </Box>
   );
-};
+});
 
-const CastCrew: FC<PropsType> = ({ data }) => {
+const CastCrew: FC<PropsType> = memo(({ data }) => {
   const quantityСards = 9;
   const res = arraySlice(data, quantityСards);
   const cast = res.map((item, index) => <CardArtist key={index} data={item} />);
@@ -55,9 +55,9 @@ const CastCrew: FC<PropsType> = ({ data }) => {
       </Flex>
     </Box>
   );
-};
+});
 
-const CastCrewContainer: FC = () => {
+const CastCrewContainer: FC = memo(() => {
   const { query } = useRouter();
   const { data, isLoading } = useQuery([
     "credits",
@@ -79,7 +79,7 @@ const CastCrewContainer: FC = () => {
       </Box>
     </Box>
   );
-};
+});
 
 export default CastCrewContainer;
 

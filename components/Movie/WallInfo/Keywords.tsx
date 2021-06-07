@@ -1,10 +1,10 @@
 import { Button } from "@chakra-ui/button";
 import { Box, Heading } from "@chakra-ui/layout";
 import { useRouter } from "next/router";
-import { FC } from "react";
+import { FC, memo } from "react";
 import { useQuery } from "react-query";
 
-const KeyBoardsContainer: FC = () => {
+const KeyBoardsContainer: FC = memo(() => {
   const { query } = useRouter();
 
   const { data, isLoading } = useQuery([
@@ -19,10 +19,11 @@ const KeyBoardsContainer: FC = () => {
       <KeyBoards data={keyboardsData} />
     </Box>
   );
-};
+});
+
 export default KeyBoardsContainer;
 
-const KeyBoards: FC<PropsType> = ({ data }) => {
+const KeyBoards: FC<PropsType> = memo(({ data }) => {
   const keywords = data.keywords.map((item: any, index: number) => (
     <Button m='2' bgColor='gray.100' color='black' key={index}>
       {item.name}
@@ -34,7 +35,8 @@ const KeyBoards: FC<PropsType> = ({ data }) => {
       <Box>{keywords}</Box>
     </Box>
   );
-};
+});
+
 type PropsType = {
   data: KeyBoardsDataType;
 };

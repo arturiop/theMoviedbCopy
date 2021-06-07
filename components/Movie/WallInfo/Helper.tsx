@@ -1,8 +1,8 @@
 import { DownloadIcon, QuestionOutlineIcon } from "@chakra-ui/icons";
 import { Box, Link } from "@chakra-ui/layout";
-import { FC } from "react";
+import { FC, memo } from "react";
 
-export const Helper: FC = () => {
+export const Helper: FC = memo(() => {
   return (
     <Box>
       <Link>
@@ -15,4 +15,4 @@ export const Helper: FC = () => {
       </Box>
     </Box>
   );
-};
+});

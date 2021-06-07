@@ -1,9 +1,9 @@
 import { Avatar } from "@chakra-ui/avatar";
 import { StarIcon } from "@chakra-ui/icons";
 import { Box, Flex, Heading, Link, Text } from "@chakra-ui/layout";
-import { FC } from "react";
+import { FC, memo } from "react";
 import { ReviewsAuthorType } from "../../../../types/types";
-import { avRewPath } from "../../../config";
+import { avatarNotFound, avRewPath } from "../../../config";
 
 const mounths = [
   "January",
@@ -27,13 +27,20 @@ const formatDate = (date: string) => {
   return formattedDate.join(" ");
 };
 
-export const BlockReviews: FC<PropsType> = ({ data }) => {
+export const BlockReviews: FC<PropsType> = memo(({ data }) => {
   const dateCreated = formatDate(data.created_at);
   const rating = data.author_details.rating + ".0";
   return (
     <Box>
       <Flex pb='2%'>
-        <Avatar m='2%' src={avRewPath + data.author_details.avatar_path} />
+        <Avatar
+          m='2%'
+          src={
+            data.author_details.avatar_path
+              ? avRewPath + data.author_details.avatar_path
+              : avatarNotFound
+          }
+        />
         <Box>
           <Flex my='2%' align='center'>
             <Box>
@@ -58,12 +65,12 @@ export const BlockReviews: FC<PropsType> = ({ data }) => {
           </Flex>
           <Text noOfLines={5}>{data.content}</Text>
           {""}
-          <Link ontWeight='bold'>read the rest.</Link>
+          <Link fontWeight='bold'>read the rest.</Link>
         </Box>
       </Flex>
     </Box>
   );
-};
+});
 
 type PropsType = {
   data: ReviewsAuthorType;

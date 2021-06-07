@@ -1,12 +1,12 @@
 import { Box, Container, Divider, Flex, Stack } from "@chakra-ui/layout";
-import { FC } from "react";
+import { FC, memo } from "react";
 import WallInfo from "../WallInfo";
 import CastCrewContainer from "./CastCrew";
 import MediaContainer from "./Media";
 import Recomendations from "./Recomendations";
 import SocialContainer from "./Social/Social";
 
-const MovieContent: FC = () => {
+const MovieContent: FC = memo(() => {
   return (
     <Box w='100%'>
       <Container maxW='container.xl' p={10}>
@@ -33,6 +33,6 @@ const MovieContent: FC = () => {
       </Container>
     </Box>
   );
-};
+});
 
 export default MovieContent;

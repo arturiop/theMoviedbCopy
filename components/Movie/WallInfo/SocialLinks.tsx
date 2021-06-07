@@ -1,7 +1,7 @@
 import { EmailIcon, PhoneIcon, TimeIcon } from "@chakra-ui/icons";
 import { Box, Flex, Link } from "@chakra-ui/layout";
 import { useRouter } from "next/router";
-import { FC } from "react";
+import { FC, memo } from "react";
 import { useQuery } from "react-query";
 import { fbPath, instPath, twitterPath } from "../../config";
 
@@ -33,7 +33,7 @@ const SocialLinks: FC<PropsType> = ({ data }) => {
   );
 };
 
-const SocialLinksContainer = () => {
+const SocialLinksContainer = memo(() => {
   const { query } = useRouter();
 
   const { data, error, isLoading } = useQuery<any, Error>([
@@ -46,7 +46,7 @@ const SocialLinksContainer = () => {
   if (error) return <div>Error</div>;
 
   return <SocialLinks data={external} />;
-};
+});
 
 export default SocialLinksContainer;
 

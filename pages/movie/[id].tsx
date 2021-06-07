@@ -7,6 +7,7 @@ import { useRouter } from "next/router";
 
 const Movie: FC = () => {
   const { query } = useRouter();
+
   const { data, error, isLoading } = useQuery(["movieData", { id: query.id }]);
   const movieData = data as MovieDataType;
 

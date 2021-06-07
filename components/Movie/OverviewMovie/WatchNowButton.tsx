@@ -1,8 +1,8 @@
 import { Button } from "@chakra-ui/button";
 import { Box, Flex } from "@chakra-ui/layout";
-import { FC } from "react";
+import { FC, memo } from "react";
 
-export const WatchNowButton: FC = () => {
+export const WatchNowButton: FC = memo(() => {
   return (
     <>
       <Flex
@@ -26,4 +26,4 @@ export const WatchNowButton: FC = () => {
       </Flex>
     </>
   );
-};
+});

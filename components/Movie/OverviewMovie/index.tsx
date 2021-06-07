@@ -1,5 +1,5 @@
 import { Box, Container } from "@chakra-ui/layout";
-import React, { FC } from "react";
+import React, { FC, memo } from "react";
 import { useQuery } from "react-query";
 import { MovieDataType } from "../../../types/types";
 import { bgdropPath } from "../../config";
@@ -23,7 +23,7 @@ const OverviewMovie: FC<PropsType> = ({ data }) => {
   );
 };
 
-const OverviewMovieContainer: FC = () => {
+const OverviewMovieContainer: FC = memo(() => {
   const { query } = useRouter();
   const { data, error, isLoading } = useQuery<any, Error>([
     "movieData",
@@ -42,7 +42,7 @@ const OverviewMovieContainer: FC = () => {
       )}
     </Box>
   );
-};
+});
 
 export default OverviewMovieContainer;
 
