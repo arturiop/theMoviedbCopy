@@ -1,0 +1,19 @@
+import { Box } from "@chakra-ui/layout";
+import Link from "next/link";
+import React, { FC } from "react";
+
+const LinksCreator: FC<PropsType> = ({ data }) => {
+  const links = data.map((item, index) => (
+    <Box>
+      <Link key={index} href={item.link}>
+        <a>{item.description}</a>
+      </Link>
+    </Box>
+  ));
+  return <>{links}</>;
+};
+export default LinksCreator;
+
+type PropsType = {
+  data: Array<any>;
+};
