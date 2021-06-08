@@ -60,6 +60,7 @@ export const dataFooter = [
     title: "ThE BASICS",
     subtypes: [
       { description: "About TMDb", link: "#" },
+
       { description: "Contact Us", link: "#" },
       { description: "Support Forums", link: "#" },
       { description: "API", link: "#" },

@@ -16,7 +16,7 @@ export const ActionButtons: FC<PropsType> = memo(({ vote }) => {
     <Box mb='3%'>
       <Flex align='center'>
         <CircularProgress
-          size={20}
+          size='5rem'
           value={rating}
           capIsRound
           trackColor='black'
@@ -24,7 +24,7 @@ export const ActionButtons: FC<PropsType> = memo(({ vote }) => {
           borderRadius='50'
           color='green.400'
           thickness={6}
-          fontSize={60}
+          fontSize='6xl'
         >
           <CircularProgressLabel>{rating}%</CircularProgressLabel>
         </CircularProgress>
@@ -32,18 +32,18 @@ export const ActionButtons: FC<PropsType> = memo(({ vote }) => {
           User Score
         </Text>
         <Flex alignItems='center'>
-          <ButtomAction text='Add to list'>
-            <HamburgerIcon />
-          </ButtomAction>
-          <ButtomAction text='Mark as fovourite'>
-            <TriangleUpIcon />
-          </ButtomAction>
-          <ButtomAction text='Add to your watchlist'>
-            <AttachmentIcon />
-          </ButtomAction>
-          <ButtomAction text='Rate It!'>
-            <StarIcon />
-          </ButtomAction>
+          <ButtomAction children={<HamburgerIcon />} text='Add to list' />
+          <ButtomAction
+            children={<TriangleUpIcon />}
+            text='Mark as fovourite'
+          />
+          <ButtomAction
+            children={<AttachmentIcon />}
+            text='Add to your watchlist'
+          />
+
+          <ButtomAction children={<StarIcon />} text='Rate It!' />
+
           <Box>
             <Button color='white'>
               <HamburgerIcon mr='5' />

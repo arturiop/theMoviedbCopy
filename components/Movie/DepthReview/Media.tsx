@@ -156,7 +156,7 @@ const MediaContainer = memo(() => {
 export default MediaContainer;
 
 type PropsDrawsImages = {
-  data: Array<any>;
+  data: Array<ImageType>;
 };
 
 type PropsVideoBox = {

@@ -1,4 +1,4 @@
-import { Container, SimpleGrid } from "@chakra-ui/layout";
+import { Container, Flex, SimpleGrid } from "@chakra-ui/layout";
 import { Button } from "@chakra-ui/button";
 import { Menu, MenuButton, MenuList } from "@chakra-ui/menu";
 import { FC, memo } from "react";
@@ -14,9 +14,9 @@ const ContentNavBar: FC<PropsType> = memo(({ data }) => {
         fontSize='16px'
         color='black'
         _hover={{ bg: "none" }}
-        rightIcon={<ChevronDownIcon />}
       >
         {item.title}
+        <ChevronDownIcon />
       </MenuButton>
       <MenuList>
         <LinksCreator data={item.subtypes} />
@@ -25,10 +25,8 @@ const ContentNavBar: FC<PropsType> = memo(({ data }) => {
   ));
 
   return (
-    <Container maxW={400} mx='auto'>
-      <SimpleGrid columns={4} spacing={0}>
-        {categories}
-      </SimpleGrid>
+    <Container>
+      <Flex>{categories}</Flex>
     </Container>
   );
 });

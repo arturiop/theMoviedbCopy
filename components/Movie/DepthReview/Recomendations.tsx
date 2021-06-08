@@ -47,7 +47,7 @@ const RecomendationBlock: FC<PropsType> = memo(({ data }) => {
 
 const Recomendations: FC = () => {
   const { query } = useRouter();
-  const { data, error, isLoading } = useQuery<any, Error>([
+  const { data, error, isLoading } = useQuery([
     "recommendations",
     { id: query.id, path: "/recommendations" },
   ]);

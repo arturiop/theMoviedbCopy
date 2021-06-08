@@ -1,7 +1,6 @@
 export const Button = {
   baseStyle: {
     borderRadius: "base",
-    _hover: { bg: "none" },
   },
 
   sizes: {
@@ -26,6 +25,10 @@ export const Button = {
     solid: {
       bg: "",
       color: "black",
+      _active: { bg: "none" },
+      _before: { bg: "none" },
+      _focus: { shadow: "none" },
+      _hover: { bg: "none" },
     },
   },
 

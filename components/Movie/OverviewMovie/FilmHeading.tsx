@@ -14,13 +14,11 @@ export const FilmHeading: FC<PropsType> = memo(({ data }) => {
   const releaseYear = `(${data.release_date.substring(0, 4)})`;
 
   const temp = data.production_countries
-    .map((item: any) => item.iso_3166_1)
+    .map((item) => item.iso_3166_1)
     .join(",");
   const productionCountries = `(${temp})`;
-  const genres = data.genres.map((item: any, index: number) => (
-    <Link _hover={{ textDecoration: "none" }} href='#' key={index}>
-      {item.name}
-    </Link>
+  const genres = data.genres.map((item, index) => (
+    <Link key={index}>{item.name}</Link>
   ));
 
   const filmDuration = calculateDuration(data.runtime as number);

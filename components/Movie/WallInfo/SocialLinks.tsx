@@ -36,7 +36,7 @@ const SocialLinks: FC<PropsType> = ({ data }) => {
 const SocialLinksContainer = memo(() => {
   const { query } = useRouter();
 
-  const { data, error, isLoading } = useQuery<any, Error>([
+  const { data, error, isLoading } = useQuery([
     "external",
     { id: query.id, path: "/external_ids" },
   ]);

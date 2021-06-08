@@ -14,14 +14,7 @@ export const WatchNowButton: FC = memo(() => {
         <Box bg='blue'>Buy</Box>
         <Flex ml='3%' flexDirection='column'>
           <Box>Available to Rent or Buy</Box>
-          <Button
-            color='white'
-            _active={{ shadow: "none" }}
-            _before={{ shadow: "none" }}
-            _hover={{ shadow: "none" }}
-          >
-            Watch Now
-          </Button>
+          <Button color='white'>Watch Now</Button>
         </Flex>
       </Flex>
     </>

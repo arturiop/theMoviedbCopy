@@ -140,3 +140,13 @@ export type CastType = {
   credit_id: string;
   order: number;
 };
+
+export type ConfigDataSubtype = {
+	description:string,
+	link: string,
+}
+
+export type ConfigDataType = {
+  title: string,
+  subtypes: ConfigDataSubtype[]
+}

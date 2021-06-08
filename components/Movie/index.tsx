@@ -8,9 +8,7 @@ import { dataContent } from "../config";
 const MovieContainer: FC = () => {
   return (
     <Box as='main' w='100%'>
-      <Container maxW='container.sm'>
-        <ContentNavBar data={dataContent} />
-      </Container>
+      <ContentNavBar data={dataContent} />
       <OverviewMovieContainer />
       <MovieContent />
     </Box>

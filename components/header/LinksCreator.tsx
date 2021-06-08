@@ -2,7 +2,8 @@ import { Button } from "@chakra-ui/button";
 import { ChevronRightIcon } from "@chakra-ui/icons";
 import { Menu, MenuButton, MenuItem, MenuList } from "@chakra-ui/menu";
 import Link from "next/link";
-import React, { FC, memo } from "react";
+import React, { FC } from "react";
+import { dataContent } from "../config";
 
 const LinksCreator: FC<PropsType> = ({ data }) => {
   const links = data.map((item, index) => (
@@ -38,5 +39,19 @@ const LinksCreator: FC<PropsType> = ({ data }) => {
 export default LinksCreator;
 
 type PropsType = {
-  data: Array<any>;
+  data: any
 };
+
+// type destT = {
+// 	description: string,
+// 	link: string
+// }
+
+// type sdf = typeof dataContent
+
+// type dataContentType = {
+// 	title: string,
+// 	subtypes: Array<destT | dataContentType > 
+// }
+
+

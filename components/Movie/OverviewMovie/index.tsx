@@ -25,10 +25,9 @@ const OverviewMovie: FC<PropsType> = ({ data }) => {
 
 const OverviewMovieContainer: FC = memo(() => {
   const { query } = useRouter();
-  const { data, error, isLoading } = useQuery<any, Error>([
-    "movieData",
-    { id: query.id },
-  ]);
+
+  const { data, error, isLoading } = useQuery(["movieData", { id: query.id }]);
+
   const movieData = data as MovieDataType;
 
   return (
